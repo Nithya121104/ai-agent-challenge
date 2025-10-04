@@ -1,2 +1,37 @@
 # ai-agent-challenge
 Coding agent challenge which write custom parsers for Bank statement PDF.
+This project is part of the challenge to build an autonomous agent that generates custom parsers for bank statement PDFs, validates them against expected CSV outputs, and self-corrects when tests fail.
+Run Instructions:
+1. Setup Python environment
+2. Install dependencies
+3. Prepare input data
+4. Run Agent
+5. Review results
+┌─────────────────────────────────────────┐
+│         AGENT LOOP (Max 3 Self cycles)  |
+└─────────────────────────────────────────┘
+              │
+              ▼
+    ┌─────────────────┐
+    │  1. PLAN        │  Analyze PDF structure & CSV schema
+    │      Observe    │  Understand requirements
+    └────────┬────────┘
+             │
+             ▼
+    ┌─────────────────┐
+    │  2. GENERATE    │  LLM writes parser code
+    │     Code Tool   │  Uses pdfplumber + pandas
+    └────────┬────────┘
+             │
+             ▼
+    ┌─────────────────┐
+    │  3. TEST        │  Run parser & compare output
+    │     Pytest Tool │  Check DataFrame.equals()
+    └────────┬────────┘
+             │
+             ▼
+    ┌─────────────────┐
+    │  4. REFINE      │  If failed: loop with error feedback
+    │     Self-debug  │  If passed: exit 
+    └─────────────────┘
+
